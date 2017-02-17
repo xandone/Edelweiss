@@ -235,4 +235,5 @@ public class SnowflakeView extends View {
         mHeight = h;
         mLength = mWidth / LEN_TIMES;
     }
+
 }
