@@ -1,23 +1,20 @@
 package app.xandone.com.edelweiss;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
+import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private SnowflakeView snowflakeView;
+    private SnowflakeView snowflakeView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        snowflakeView = (SnowflakeView) findViewById(R.id.snowflakeView);
-        Animation animation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        animation.setDuration(2000);
-        animation.setInterpolator(new LinearInterpolator());
-        animation.setRepeatCount(Animation.INFINITE);
-//        snowflakeView.setAnimation(animation);
+//        snowflakeView = (SnowflakeView) findViewById(R.id.snowflakeView);
+//        snowflakeView1 = (SnowflakeView) findViewById(R.id.snowflakeView1);
+//
+//        snowflakeView.snowAnim2(6000);
+//        snowflakeView1.snowAnim2(1000);
     }
 }
