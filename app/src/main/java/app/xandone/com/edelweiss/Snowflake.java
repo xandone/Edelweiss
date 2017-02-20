@@ -257,8 +257,8 @@ public class Snowflake {
      */
     public void setOriginX(int x) {
         this.mOriginX += x;
-        if (x > mW || x < -mWidth) {
-            Utils.randomIntPositive(mW);
+        if (mOriginX > mW || mOriginX < -mWidth) {
+            mOriginX = Utils.randomIntPositive(mW);
         }
     }
 
@@ -269,8 +269,8 @@ public class Snowflake {
      */
     public void setOriginY(int y) {
         this.mOriginY += y;
-        if (y > mH) {
-            Utils.randomIntPositive(0 - mHeight);
+        if (mOriginY > mH) {
+            mOriginY = -mHeight;
         }
     }
 }
