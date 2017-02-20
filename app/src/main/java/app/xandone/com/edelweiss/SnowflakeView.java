@@ -36,12 +36,15 @@ public class SnowflakeView extends View {
     private int mCornerThornTrunkHeight_2;
     private int mCornerThornTrunkHeight_3;
 
-
     private int mCornerThornPadding_1;
     private int mCornerThornPadding_2;
     private int mCornerThornHeight_1;
     private int mCornerThornHeight_2;
 
+    private int transHeight_1;
+    private int transHeight_2;
+
+    public int mProportion;
 
     public SnowflakeView(Context context) {
         this(context, null);
@@ -63,24 +66,8 @@ public class SnowflakeView extends View {
         mHexagonPath_2 = new Path();
         mHexagonPath_3 = new Path();
 
-        mDefaultSize = Utils.dp2px(mContext, 300);
-
-        mThornPadding_1 = Utils.dp2px(mContext, 1);
-        mThornPadding_2 = Utils.dp2px(mContext, 3);
-        mThornHeight_1 = Utils.dp2px(mContext, 10);
-        mThornHeight_2 = Utils.dp2px(mContext, 20);
-
-        mCornerThornTrunkPadding_1 = Utils.dp2px(mContext, 2);
-        mCornerThornTrunkPadding_2 = Utils.dp2px(mContext, 6);
-        mCornerThornTrunkHeight = Utils.dp2px(mContext, 60);
-        mCornerThornTrunkHeight_1 = Utils.dp2px(mContext, 70);
-        mCornerThornTrunkHeight_2 = Utils.dp2px(mContext, 90);
-        mCornerThornTrunkHeight_3 = Utils.dp2px(mContext, 100);
-
-        mCornerThornPadding_1 = Utils.dp2px(mContext, 1);
-        mCornerThornPadding_2 = Utils.dp2px(mContext, 6);
-        mCornerThornHeight_1 = Utils.dp2px(mContext, 30);
-        mCornerThornHeight_2 = Utils.dp2px(mContext, 40);
+        mDefaultSize = Utils.dp2px(mContext, 100);
+        mProportion = Utils.dp2px(mContext, 300);
 
     }
 
@@ -107,9 +94,9 @@ public class SnowflakeView extends View {
         int y2 = y1;
         canvas.save();
         for (int i = 0; i < 6; i++) {
-            mPaint.setStrokeWidth(30);
+            mPaint.setStrokeWidth(6);
             canvas.drawLine(x1, y1, x1 + mLength, y1, mPaint);
-            mPaint.setStrokeWidth(8);
+            mPaint.setStrokeWidth(2);
             canvas.drawLine(x2, y2, 0, 0, mPaint);
             canvas.rotate(60, 0, 0);
         }
@@ -146,8 +133,6 @@ public class SnowflakeView extends View {
      * @param canvas
      */
     public void drawCornerThornTrunk(Canvas canvas) {
-        int h1 = Utils.dp2px(mContext, 16);
-        int h2 = Utils.dp2px(mContext, 30);
         mPaint.setColor(Color.WHITE);
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeWidth(2);
@@ -166,8 +151,8 @@ public class SnowflakeView extends View {
         canvas.rotate(30, 0, 0);
         for (int i = 0; i < 6; i++) {
             canvas.drawPath(mHexagonPath_3, mPaint);
-            drawCornerThorn(canvas, h1);
-            drawCornerThorn(canvas, h2);
+            drawCornerThorn(canvas, transHeight_1);
+            drawCornerThorn(canvas, transHeight_2);
             canvas.rotate(60, 0, 0);
         }
         canvas.restore();
@@ -234,6 +219,26 @@ public class SnowflakeView extends View {
         mWidth = w;
         mHeight = h;
         mLength = mWidth / LEN_TIMES;
+
+        mThornPadding_1 = Utils.dp2px(mContext, 1) * mWidth / mProportion;
+        mThornPadding_2 = Utils.dp2px(mContext, 3) * mWidth / mProportion;
+        mThornHeight_1 = Utils.dp2px(mContext, 10) * mWidth / mProportion;
+        mThornHeight_2 = Utils.dp2px(mContext, 20) * mWidth / mProportion;
+
+        mCornerThornTrunkPadding_1 = Utils.dp2px(mContext, 2) * mWidth / mProportion;
+        mCornerThornTrunkPadding_2 = Utils.dp2px(mContext, 6) * mWidth / mProportion;
+        mCornerThornTrunkHeight = (int) ((mWidth / 2 - mLength) * 0.6f);
+        mCornerThornTrunkHeight_1 = (int) ((mWidth / 2 - mLength) * 0.7f);
+        mCornerThornTrunkHeight_2 = (int) ((mWidth / 2 - mLength) * 0.9f);
+        mCornerThornTrunkHeight_3 = mWidth / 2 - mLength;
+
+        mCornerThornPadding_1 = Utils.dp2px(mContext, 1) * mWidth / mProportion;
+        mCornerThornPadding_2 = Utils.dp2px(mContext, 6) * mWidth / mProportion;
+        mCornerThornHeight_1 = (int) ((mWidth / 2 - mLength) * 0.3f);
+        mCornerThornHeight_2 = (int) ((mWidth / 2 - mLength) * 0.4f);
+
+        transHeight_1 = (int) ((mWidth / 2 - mLength) * 0.26f);
+        transHeight_2 = (int) ((mWidth / 2 - mLength) * 0.4f);
     }
 
 }
