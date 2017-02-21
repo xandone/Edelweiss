@@ -16,7 +16,7 @@ public class EdelweissView extends View {
     public static final int SPEED_X = 4;
     public static final int SPEED_Y = 10;
     public static final int SNOWFLAKE_W_MAX = 120;
-    public static final int SNOWFLAKE_W_MIN = 40;
+    public static final int SNOWFLAKE_W_MIN = 46;
     public static final int SNOWFLAKE_ANIM_TIEM_MAX = 6000;
     public static final int SNOWFLAKE_ANIM_TIEM_MIN = 1000;
 
